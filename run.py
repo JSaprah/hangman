@@ -1,3 +1,19 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+import random
+
+random_word = "secret"
+
+def welcome():
+    """
+    Welcome the user to the game and explaining the rules
+    """
+    print("Welcome to Hangman. What is your name?")
+    name = input()
+    print(f"I have a word on my mind {name}. Can you guess it?")
+
+def main():
+    """
+    Run all program functions
+    """
+    welcome()
+
+main()
