@@ -24,9 +24,12 @@ def get_user_response(word):
     """
     turns = 0
     guess = []
-
     characters = [c for c in word]
+    hidden_value = "_ " * len(characters)
+    print(f"The word I am thinking of is: {hidden_value}")
+
     print(characters)
+    
     print("Which letter do you think is the the word I am thinking of?")
 
     while turns < 5:
