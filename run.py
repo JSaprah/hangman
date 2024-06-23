@@ -17,7 +17,7 @@ def get_random_word():
 
     return(secret_word)
 
-def get_user_response(word):
+def validate_user_response(word):
     """
     Set the turns to 0 and increase the count if the user makes a wrong guess
     Receive and validate user response
@@ -26,8 +26,9 @@ def get_user_response(word):
     guess = []
     characters = [c for c in word]
     hidden_value = ["_ "] * len(characters)
-    print(f"The word I am thinking of is: {hidden_value}")
-
+    hide = "_ " *len(characters)
+    print(f"The word I am thinking of is: {hide}")
+    
     print(characters)
     
     print("Which letter do you think is the the word I am thinking of?")
@@ -45,12 +46,11 @@ def get_user_response(word):
         elif(user_response in characters):
             print("Well done. Continue guessing..")
             guess.append(user_response)
-            #show_value on the correct place
 
             for i, letter in enumerate(characters):
                 if letter != "_ " and user_response == letter:
                     hidden_value[i] = letter
-                    print("".join(hidden_value))
+            print("".join(hidden_value))
 
         else:
             print("Oops try again")
@@ -65,6 +65,6 @@ def main():
     """
     welcome()
     secret_word = get_random_word()
-    get_user_response(secret_word)
+    validate_user_response(secret_word)
 
 main()
