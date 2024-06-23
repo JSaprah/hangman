@@ -1,4 +1,25 @@
 import random
+import gspread
+from google.oauth2.service_account import Credentials
+
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('hangman_words')
+
+#Testing data import from spreadsheet
+"""
+def importing_words():
+    data = SHEET.worksheet('words')
+    words_data = data.get_all_values()
+    print(words_data)
+"""
 
 def welcome():
     """
@@ -13,6 +34,8 @@ def get_random_word():
     Get a random word from the given list
     """
     random_words = ["avenue", "bookworm", "cycle", "duplex", "eardrop", "fuchsia", "galaxy", "hyphen", "injury", "jackpot", "kiosk", "luxury", "matrix", "nowadays", "oxygen", "pneumonia", "quartz", "rhubarb", "scratch", "transplant", "unknown", "vodka", "wizard", "youthful", "zodiac"]
+    data = SHEET.worksheet('words')
+    #random_words = data.get_all_values()
     secret_word = random.choice(random_words)
 
     return(secret_word)
