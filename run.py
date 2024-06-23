@@ -25,7 +25,7 @@ def get_user_response(word):
     turns = 0
     guess = []
     characters = [c for c in word]
-    hidden_value = "_ " * len(characters)
+    hidden_value = ["_ "] * len(characters)
     print(f"The word I am thinking of is: {hidden_value}")
 
     print(characters)
@@ -45,6 +45,12 @@ def get_user_response(word):
         elif(user_response in characters):
             print("Well done. Continue guessing..")
             guess.append(user_response)
+            #show_value on the correct place
+
+            for i, letter in enumerate(characters):
+                if letter != "_ " and user_response == letter:
+                    hidden_value[i] = letter
+                    print("".join(hidden_value))
 
         else:
             print("Oops try again")
