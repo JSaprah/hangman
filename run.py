@@ -20,7 +20,7 @@ def get_random_word():
 def get_user_response(word):
     """
     Set the turns to 0 and increase the count if the user makes a wrong guess
-    Receive user response
+    Receive and validate user response
     """
     turns = 0
     guess = []
@@ -32,26 +32,21 @@ def get_user_response(word):
     while turns < 5:
         user_response = input()
         print(f"You guessed {user_response}.")
-        guess.append(user_response)
-        print(f"This is the guess{guess}")
 
-        try:
-            if(user_response != 1):
-                raise ValueError("Exact one value required")
-            elif(user_resonse in guess):
-                raise ValueError(f"You already guessed these letters {guess}.")
-        except ValueError as e:
-            print("Please provide a different input")
-            correct_value = False
+        if(user_response in guess):
+            print(f"You already guessed these letters {guess}. Try again!")
 
-        if(user_response in characters):
+        elif(user_response not in "a,b,c,d,e,f,g,hi,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"):
+            print("Letter not in the alphabet. Try again!")
+
+        elif(user_response in characters):
             print("Well done. Continue guessing..")
-            
+            guess.append(user_response)
+
         else:
             print("Oops try again")
             turns = turns + 1
-            print_hangman(turns)
-            print ("_",end="")
+            guess.append(user_response)
 
         print(turns)
 
@@ -62,16 +57,5 @@ def main():
     welcome()
     secret_word = get_random_word()
     get_user_response(secret_word)
-
-def print_hangman(turns):
-    """
-    Print the hangman images on each wrong guess
-    """
-
-    if(turns == 6):
-        print("----------")
-        print("|    0")
-        print("|   \|/")
-        print("|   / \ ")
 
 main()
