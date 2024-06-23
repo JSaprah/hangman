@@ -22,7 +22,7 @@ def validate_user_response(word):
     Set the turns to 0 and increase the count if the user makes a wrong guess
     Receive and validate user response
     """
-    turns = 0
+    failed_attempt = 0
     guess = []
     characters = [c for c in word]
     hidden_value = ["_ "] * len(characters)
@@ -33,7 +33,7 @@ def validate_user_response(word):
     
     print("Which letter do you think is the the word I am thinking of?")
 
-    while turns < 5:
+    while failed_attempt < 5:
         user_response = input()
         print(f"You guessed {user_response}.")
 
@@ -41,7 +41,7 @@ def validate_user_response(word):
             print(f"You already guessed these letters {guess}. Try again!")
 
         elif(user_response not in "a,b,c,d,e,f,g,hi,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"):
-            print("Letter not in the alphabet. Try again!")
+            print("Letter not in the alphabet or multiple values used. Try again!")
 
         elif(user_response in characters):
             print("Well done. Continue guessing..")
@@ -54,10 +54,10 @@ def validate_user_response(word):
 
         else:
             print("Oops try again")
-            turns = turns + 1
+            failed_attempt = failed_attempt + 1
             guess.append(user_response)
 
-        print(turns)
+        print(f"Failed attempts: {failed_attempt}")
 
 def main():
     """
