@@ -21,7 +21,35 @@ def welcome():
     """
     print("Welcome to Hangman. What is your name?")
     name = input()
-    print(f"I have a word on my mind {name}. Can you guess it?")
+    print(f"Are you ready to play {name}?")
+
+    menu()
+
+
+def menu():
+    print("Press 1: for instructions")
+    print("Press 2: for play game")
+    pressed_key = input()
+
+    if (pressed_key == 1):
+        instruction()
+    elif (pressed_key == 2):
+        play()
+    else:
+        print("input not recognized. What do you want to do?")
+        print("Press i for instructions or p for play game")
+
+
+def instruction():
+    print("A random word will be represented by a row of dashes")
+    print("Your task is to guess the letter you think is in the word")
+    print("Each wrong guess will bring the man closer to be hanged")
+    print("Do you think you can take the challenge and safe the hanging man?")
+
+
+def play():
+    secret_word = get_random_word()
+    validate_user_response(secret_word)
 
 
 def get_random_word():
@@ -50,9 +78,11 @@ def validate_user_response(word):
     """
     failed_attempt = 0
     guess = []
-    characters = [c for c in word]
+    characters = [char for char in word]
     hidden_value = ["_ "] * len(characters)
     hide = "_ " * len(characters)
+
+    print("I have a word on my mind. Can you guess it?")
     print(f"The word I am thinking of is: {hide}")
 
     print(characters)
@@ -101,8 +131,6 @@ def main():
     Run all program functions
     """
     welcome()
-    secret_word = get_random_word()
-    validate_user_response(secret_word)
 
 
 main()
