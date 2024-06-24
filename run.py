@@ -27,24 +27,44 @@ def welcome():
 
 
 def menu():
-    print("Press 1: for instructions")
-    print("Press 2: for play game")
-    pressed_key = input()
 
-    if (pressed_key == 1):
-        instruction()
-    elif (pressed_key == 2):
-        play()
-    else:
-        print("input not recognized. What do you want to do?")
-        print("Press i for instructions or p for play game")
+    invalid_input = True
+
+    while invalid_input:
+        print("Press i: for instructions")
+        print("Press p: for play game")
+        pressed_key = input()
+        print(f"Key pressed= {pressed_key}")
+
+        if (pressed_key == "i"):
+            invalid_input = False
+            instruction()
+            return False
+
+        elif (pressed_key == "p"):
+            invalid_input = False
+            play()
+            return False
+
+        else:
+            print("input not recognized. What do you want to do?")
+            invalid_input = True
 
 
 def instruction():
+
     print("A random word will be represented by a row of dashes")
     print("Your task is to guess the letter you think is in the word")
     print("Each wrong guess will bring the man closer to be hanged")
     print("Do you think you can take the challenge and safe the hanging man?")
+    print("Go back to menu or play the game")
+
+    action_user = input()
+
+    if (action_user == "m"):
+        menu()
+    elif (action_user == "p"):
+        play()
 
 
 def play():
