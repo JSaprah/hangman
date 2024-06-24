@@ -19,6 +19,16 @@ def welcome():
     """
     Welcome the user to the game.
     """
+
+    print("""
+██   ██  █████  ███    ██  ██████  ███    ███  █████  ███    ██ 
+██   ██ ██   ██ ████   ██ ██       ████  ████ ██   ██ ████   ██ 
+███████ ███████ ██ ██  ██ ██   ███ ██ ████ ██ ███████ ██ ██  ██ 
+██   ██ ██   ██ ██  ██ ██ ██    ██ ██  ██  ██ ██   ██ ██  ██ ██ 
+██   ██ ██   ██ ██   ████  ██████  ██      ██ ██   ██ ██   ████ 
+                                                                
+    """)
+
     print("Welcome to Hangman. What is your name?")
     name = input()
     print(f"Are you ready to play {name}?")
@@ -121,16 +131,19 @@ def validate_user_response(word):
         if (user_response in guess):
             print(f"You already guessed these letters {guess}. Try again!")
 
-        elif (user_response.isalpha() == False):
+        elif (user_response == ""):
+            print("blank value not allowed")
+
+        elif (user_response.isalpha() is False):
             print("Letter not in the alphabet. Try again!")
 
         elif (user_response in characters):
             print("Well done. Continue guessing..")
             guess.append(user_response)
 
-            for i, letter in enumerate(characters):
+            for index, letter in enumerate(characters):
                 if letter != "_ " and user_response == letter:
-                    hidden_value[i] = letter
+                    hidden_value[index] = letter
             print("".join(hidden_value))
 
         else:
@@ -139,6 +152,12 @@ def validate_user_response(word):
             guess.append(user_response)
 
         print(f"Failed attempts: {failed_attempt}")
+
+    if (failed_attempt == 5):
+        print("You could not safe the man from hanging")
+        clear_console()
+        print("Would you like to play again?")
+        menu()
 
 
 def clear_console():
