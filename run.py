@@ -57,14 +57,19 @@ def instruction():
     print("Your task is to guess the letter you think is in the word")
     print("Each wrong guess will bring the man closer to be hanged")
     print("Do you think you can take the challenge and safe the hanging man?")
-    print("Go back to menu or play the game")
+    print("Enter p if you want to start playing the game")
+    print("Enter any key to go back to the menu")
 
     action_user = input()
 
-    if (action_user == "m"):
-        menu()
-    elif (action_user == "p"):
+    if (action_user == "p"):
+        clear_console()
         play()
+
+    else:
+        "Returning you back to the menu"
+        clear_console()
+        menu()
 
 
 def play():
@@ -136,7 +141,7 @@ def validate_user_response(word):
         print(f"Failed attempts: {failed_attempt}")
 
 
-def clearConsole():
+def clear_console():
     """
     Clear the console
     """
