@@ -126,7 +126,7 @@ def validate_user_response(word):
 
     print("Which letter do you think is the the word I am thinking of?")
 
-    while failed_attempt < 5:
+    while failed_attempt < 8:
         user_response = input()
         print(f"You guessed {user_response}.")
 
