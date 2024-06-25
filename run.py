@@ -3,7 +3,7 @@ import os
 import gspread
 from google.oauth2.service_account import Credentials
 import colorama
-from colorama import Fore, Back, Style
+from colorama import Fore
 colorama.init(autoreset=True)
 
 SCOPE = [
@@ -44,8 +44,8 @@ def menu():
     invalid_input = True
 
     while invalid_input:
-        print("Press i: for instructions")
-        print("Press p: for play game")
+        print(Fore.CYAN + "Press i: for instructions")
+        print(Fore.CYAN + "Press p: for play game")
         pressed_key = input()
 
         if (pressed_key == "i"):
@@ -69,8 +69,8 @@ def instruction():
     print("Your task is to guess the letter you think is in the word")
     print("Each wrong guess will bring the man closer to be hanged")
     print("Do you think you can take the challenge and safe the hanging man?")
-    print("Enter p if you want to start playing the game")
-    print("Enter any key to go back to the menu")
+    print(Fore.CYAN + "Enter p if you want to start playing the game")
+    print(Fore.CYAN + "Enter any key to go back to the menu")
 
     action_user = input()
 
@@ -131,7 +131,8 @@ def validate_user_response(word):
         print(f"You guessed {user_response}.")
 
         if (user_response in guess):
-            print(Fore.YELLOW + f"You already guessed these letters {guess}. Try again!")
+            print(Fore.YELLOW + f"You already guessed these letters {guess}.")
+            print("Try again!")
 
         elif (user_response == ""):
             print(Fore.YELLOW + "blank value not allowed")
