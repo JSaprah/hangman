@@ -2,6 +2,9 @@ import random
 import os
 import gspread
 from google.oauth2.service_account import Credentials
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -20,7 +23,7 @@ def welcome():
     Welcome the user to the game.
     """
 
-    print("""
+    print(Fore.CYAN + """
 ██   ██  █████  ███    ██  ██████  ███    ███  █████  ███    ██ 
 ██   ██ ██   ██ ████   ██ ██       ████  ████ ██   ██ ████   ██ 
 ███████ ███████ ██ ██  ██ ██   ███ ██ ████ ██ ███████ ██ ██  ██ 
@@ -44,7 +47,6 @@ def menu():
         print("Press i: for instructions")
         print("Press p: for play game")
         pressed_key = input()
-        print(f"Key pressed= {pressed_key}")
 
         if (pressed_key == "i"):
             invalid_input = False
@@ -129,16 +131,16 @@ def validate_user_response(word):
         print(f"You guessed {user_response}.")
 
         if (user_response in guess):
-            print(f"You already guessed these letters {guess}. Try again!")
+            print(Fore.YELLOW + f"You already guessed these letters {guess}. Try again!")
 
         elif (user_response == ""):
-            print("blank value not allowed")
+            print(Fore.YELLOW + "blank value not allowed")
 
         elif (user_response.isalpha() is False):
-            print("Letter not in the alphabet. Try again!")
+            print(Fore.YELLOW + "Letter not in the alphabet. Try again!")
 
         elif (user_response in characters):
-            print("Well done. Continue guessing..")
+            print(Fore.GREEN + "Well done. Continue guessing..")
             guess.append(user_response)
 
             for index, letter in enumerate(characters):
@@ -147,7 +149,7 @@ def validate_user_response(word):
             print("".join(hidden_value))
 
         else:
-            print("Oops try again")
+            print(Fore.RED + "Oops try again")
             failed_attempt = failed_attempt + 1
             guess.append(user_response)
 
