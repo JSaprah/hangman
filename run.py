@@ -1,21 +1,8 @@
 import random
 import os
-import gspread
-from google.oauth2.service_account import Credentials
 import colorama
 from colorama import Fore
 colorama.init(autoreset=True)
-
-SCOPE = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
-
-CREDS = Credentials.from_service_account_file('creds.json')
-SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('hangman_words')
 
 
 def welcome():
@@ -101,8 +88,6 @@ def get_random_word():
         "quartz", "rhubarb", "scratch", "transplant",
         "unknown", "vodka", "wizard", "youthful", "zodiac"]
 
-    # data = SHEET.worksheet('words')
-    # random_words = data.get_all_values()
     secret_word = random.choice(random_words)
 
     return (secret_word)
