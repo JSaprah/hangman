@@ -104,6 +104,10 @@ def validate_user_response(word):
     hidden_value = ["_ "] * len(characters)
     hide = "_ " * len(characters)
 
+    char_word = len(characters)
+
+    print(f"chararacters of word:{char_word}")
+
     print("I have a word on my mind. Can you guess it?")
     print(f"The word I am thinking of is: {hide}")
 
@@ -144,11 +148,30 @@ def validate_user_response(word):
 
         print(f"Failed attempts: {failed_attempt}")
 
+    clear_console()
+
     if (failed_attempt == 9):
-        print("You could not safe the man from hanging")
-        clear_console()
-        print("Would you like to play again?")
-        menu()
+        result_fail()
+    elif (hidden_value != "_"):
+        result_win()
+
+
+def result_fail():
+    """
+    Result on fail
+    """
+    print("You could not safe the man from hanging")
+    print("Would you like to play again?")
+    menu()
+
+
+def result_win(correct_guess, char_word):
+    """
+    Result on win
+    """
+    print("You won")
+    print("Would you like to play again?")
+    menu()
 
 
 def clear_console():
