@@ -111,7 +111,7 @@ def validate_user_response(word):
 
     print("Which letter do you think is the the word I am thinking of?")
 
-    while failed_attempt < 8:
+    while failed_attempt < 9:
         user_response = input()
         print(f"You guessed {user_response}.")
 
@@ -124,6 +124,9 @@ def validate_user_response(word):
 
         elif (user_response.isalpha() is False):
             print(Fore.YELLOW + "Letter not in the alphabet. Try again!")
+
+        elif (len(user_response) != 1):
+            print(Fore.YELLOW + "Input of only one letter required")
 
         elif (user_response in characters):
             print(Fore.GREEN + "Well done. Continue guessing..")
@@ -141,7 +144,7 @@ def validate_user_response(word):
 
         print(f"Failed attempts: {failed_attempt}")
 
-    if (failed_attempt == 5):
+    if (failed_attempt == 9):
         print("You could not safe the man from hanging")
         clear_console()
         print("Would you like to play again?")
