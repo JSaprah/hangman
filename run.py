@@ -141,6 +141,9 @@ def validate_user_response(word):
                     hidden_value[index] = letter
             print("".join(hidden_value))
 
+            if (hidden_value == characters):
+                result_win()
+
         else:
             print(Fore.RED + "Oops try again")
             failed_attempt = failed_attempt + 1
@@ -149,11 +152,7 @@ def validate_user_response(word):
         print(f"Failed attempts: {failed_attempt}")
 
     clear_console()
-
-    if (failed_attempt == 9):
-        result_fail()
-    elif (hidden_value != "_"):
-        result_win()
+    result_fail()
 
 
 def result_fail():
@@ -165,7 +164,7 @@ def result_fail():
     menu()
 
 
-def result_win(correct_guess, char_word):
+def result_win():
     """
     Result on win
     """
