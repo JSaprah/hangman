@@ -107,16 +107,15 @@ def validate_user_response(word):
     char_word = len(characters)
 
     print(f"chararacters of word:{char_word}")
-
     print("I have a word on my mind. Can you guess it?")
-    print(f"The word I am thinking of is: {hide}")
+    print(f"The word I am thinking of is: {hide} letters long")
 
-    print(characters)
+    # print(characters)
 
     print("Which letter do you think is the the word I am thinking of?")
 
     while failed_attempt < 9:
-        user_response = input()
+        user_response = input().lower
         print(f"You guessed {user_response}.")
 
         if (user_response in guess):
@@ -151,15 +150,15 @@ def validate_user_response(word):
 
         print(f"Failed attempts: {failed_attempt}")
 
-    clear_console()
-    result_fail()
+    result_fail(word)
 
 
-def result_fail():
+def result_fail(correct_answer):
     """
     Result on fail
     """
     print("You could not safe the man from hanging")
+    print(f"The correct answer was {correct_answer}")
     print("Would you like to play again?")
     menu()
 
