@@ -16,7 +16,7 @@ The libraries that were imported during the project are:
 * os (operating system): For the function to clear the console.
 
 
-## **Functions**
+## **Functions explained**
 
 ### **Welcome**
 
@@ -35,22 +35,46 @@ The libraries that were imported during the project are:
 ### **Instruction**
 
 * In this function some print statement are written to print the instructions.
+* User can read the instructions
 * The user gets the option to start playing the game or navigate back to the menu. 
 
 ### **Play**
 
 * Runs the following two functions:
-    * secret_word = get_random_word()
-    * validate_user_response(secret_word)
+    * secret_word = get_random_word(): To get a random word and save it under the variable secret_word
+    * validate_user_response(secret_word): Takes the secret_word as a parameter and runs the function to validate the user response.
 
 ### **get_random_word**
 
 * Provides a list of words for the game
-* Returns one random word from the list above as the secret_word
+* Returns one random word from the list above as the secret_word using the library random
 
 ### **validate_user_response**
 
 * Takes the secret word as a parameter.
+* Converts it to an iterable array
+* Replaces the letter by a dash
+* Represents the dashes to the user 
+* Prints statements about how long the word is and asks user for its input in alphabetic letters
+* Checks user input on the following conditions:
+    * If input has been guessed before. In this case the user gets an array back of all the words that are guessed before.
+    * If a input is blank. User gets back that the input is invalid and he/she should try again
+    * If the provided input is not in the alphabet. User gets back that this input is not in the alphabet, therefore invalid.
+    * If the user input length is not equal to 1. The user gets back that the input is invalid.
+    * If input is correct, iterate through (by enumerate) the dashes in the word and replace the dash by the provided input. Also, checks if all letters of the hidden value match the characters. If all letters are found, then the result_win function is triggered.
+    * If a wrong letters is guessed the letters is added with append to the array of the guessed letters. The failed attempt counter is increased by 1. 
+* The conditions are checked in a while loop with a counter of failed attempts. If the failed attempt reaches the maximum the user loses the game and the result_fail with the parameter word runs.
+
+### **result_fail**
+
+* Takes the parameter word from the validate_user_response
+* Prints statements to let the user know that he/she failed to guess the right word and shows the right word to the user.
+* Navigates back to the menu to give the user the option to play again.
+
+### **result_win**
+
+* Prints statements to let the user know that he/she won.
+* Navigates back to the menu to give the user the option to play again.
 
 ### **clear_console**
 
