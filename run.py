@@ -19,8 +19,8 @@ def welcome():
                                                                 
     """)
 
-    print("Welcome to Hangman. What is your name?")
-    name = input()
+    print("Welcome to Hangman.")
+    name = input("What is your name?\n")
     print(f"Are you ready to play {name}?")
 
     menu()
@@ -33,7 +33,7 @@ def menu():
     while invalid_input:
         print(Fore.CYAN + "Press i: for instructions")
         print(Fore.CYAN + "Press p: for play game")
-        pressed_key = input()
+        pressed_key = input("Enter your answer here\n")
 
         if (pressed_key == "i"):
             invalid_input = False
@@ -59,7 +59,7 @@ def instruction():
     print(Fore.CYAN + "Enter p if you want to start playing the game")
     print(Fore.CYAN + "Enter any key to go back to the menu")
 
-    action_user = input()
+    action_user = input("Write your input here\n")
 
     if (action_user == "p"):
         clear_console()
@@ -106,16 +106,13 @@ def validate_user_response(word):
 
     char_word = len(characters)
 
-    print(f"chararacters of word:{char_word}")
-    print("I have a word on my mind. Can you guess it?")
-    print(f"The word I am thinking of is: {hide} letters long")
-
-    # print(characters)
-
-    print("Which letter do you think is the the word I am thinking of?")
+    print("I have a word on my mind.")
+    print(f"The word is: {char_word} characters long")
+    print("The word I am thinking of is:")
+    print(Fore.CYAN + hide)
 
     while failed_attempt < 9:
-        user_response = input().lower
+        user_response = input("Fill in a letter\n")
         print(f"You guessed {user_response}.")
 
         if (user_response in guess):
@@ -129,7 +126,7 @@ def validate_user_response(word):
             print(Fore.YELLOW + "Letter not in the alphabet. Try again!")
 
         elif (len(user_response) != 1):
-            print(Fore.YELLOW + "Input of only one letter required")
+            print(Fore.YELLOW + "Input of only one letter required\n")
 
         elif (user_response in characters):
             print(Fore.GREEN + "Well done. Continue guessing..")
@@ -138,7 +135,7 @@ def validate_user_response(word):
             for index, letter in enumerate(characters):
                 if letter != "_ " and user_response == letter:
                     hidden_value[index] = letter
-            print("".join(hidden_value))
+            print(Fore.CYAN + "".join(hidden_value))
 
             if (hidden_value == characters):
                 result_win()
