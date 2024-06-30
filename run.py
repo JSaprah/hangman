@@ -34,6 +34,7 @@ def welcome():
     name = input("What is your name?\n").lower().strip(" ")
     clear_console()
     print(f"Are you ready to play {name}?")
+    print(Fore.CYAN + "Press i: for instructions")
 
     menu()
 
@@ -43,7 +44,6 @@ def menu():
     invalid_input = True
 
     while invalid_input:
-        print(Fore.CYAN + "Press i: for instructions")
         print(Fore.CYAN + "Press p: for play game")
         print(Fore.CYAN + "Press q: for quiet game")
         pressed_key = input("Enter your answer here\n").lower()
