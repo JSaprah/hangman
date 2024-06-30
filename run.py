@@ -21,7 +21,7 @@ def welcome():
     """)
 
     print("Welcome to Hangman.")
-    name = input("What is your name?\n")
+    name = input("What is your name?\n").lower().strip(" ")
     print(f"Are you ready to play {name}?")
     print(Fore.CYAN + "Press i: for instructions")
 
@@ -35,7 +35,7 @@ def menu():
     while invalid_input:
         print(Fore.CYAN + "Press p: for play game")
         print(Fore.CYAN + "Press q: for quiet game")
-        pressed_key = input("Enter your answer here\n")
+        pressed_key = input("Enter your answer here\n").lower()
 
         if (pressed_key == "i"):
             invalid_input = False
@@ -70,6 +70,16 @@ def play():
     validate_user_response(secret_word)
 
 
+def clear_console():
+    """
+    Clear the console
+    """
+    command = "clear"
+    if os.name in ("nt", "dos"):
+        command = "cls"
+    os.system(command)
+
+
 def validate_user_response(word):
     """
     Set the turns to 0 and increase the count if the user makes a wrong guess
@@ -89,7 +99,7 @@ def validate_user_response(word):
     print(Fore.CYAN + hide)
 
     while failed_attempt < 8:
-        user_response = input("Fill in a letter\n")
+        user_response = input("Fill in a letter\n").lower().strip(" ")
         print(f"You guessed {user_response}.")
 
         if (user_response in guess):
@@ -149,16 +159,6 @@ def result_win():
     print("Would you like to play again?")
     menu()
     clear_console()
-
-
-def clear_console():
-    """
-    Clear the console
-    """
-    command = "clear"
-    if os.name in ("nt", "dos"):
-        command = "cls"
-    os.system(command)
 
 
 def main():
