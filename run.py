@@ -147,8 +147,10 @@ def result_fail(correct_answer):
     """
     Result on fail
     """
+    print(Fore.MAGENTA + "You lost")
     print("You could not safe the man from hanging")
-    print(f"The correct answer was {correct_answer}")
+    print("The correct answer was")
+    print(Fore.MAGENTA + correct_answer)
     print("Would you like to play again?")
     menu()
 
@@ -158,8 +160,9 @@ def result_win(correct_answer):
     Result on win
     """
     clear_console
-    print("You won")
-    print(f"The correct answer was {correct_answer}")
+    print(Fore.MAGENTA + "You won")
+    print("The correct answer was")
+    print(Fore.MAGENTA + correct_answer)
     print("Would you like to play again?")
     menu()
 
