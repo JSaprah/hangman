@@ -22,6 +22,7 @@ def welcome():
 
     print("Welcome to Hangman.")
     name = input("What is your name?\n").lower().strip(" ")
+    clear_console()
     print(f"Are you ready to play {name}?")
     print(Fore.CYAN + "Press i: for instructions")
 
