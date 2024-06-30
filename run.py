@@ -6,6 +6,16 @@ from colorama import Fore
 colorama.init(autoreset=True)
 
 
+def clear_console():
+    """
+    Clear the console
+    """
+    command = "clear"
+    if os.name in ("nt", "dos"):
+        command = "cls"
+    os.system(command)
+
+
 def welcome():
     """
     Welcome the user to the game.
@@ -69,16 +79,6 @@ def instruction():
 def play():
     secret_word = get_random_word()
     validate_user_response(secret_word)
-
-
-def clear_console():
-    """
-    Clear the console
-    """
-    command = "clear"
-    if os.name in ("nt", "dos"):
-        command = "cls"
-    os.system(command)
 
 
 def validate_user_response(word):
