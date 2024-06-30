@@ -8,11 +8,41 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/attach/attach.js"></script>
+    
+    <link rel='icon' sizes="any"
+    href="https://cdn3.iconfinder.com/data/icons/brain-games/1042/Hangman-Game-grey.png"/>
+
     <title>Python Terminal by Code Institute</title>
     <style>
-        body {
-            font-family: Arial;
-        }
+
+
+#background {
+
+    background-image: url(https://i.pinimg.com/564x/4b/54/69/4b54690ea792b466498fbbf0e8c596f7.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 5em;
+    margin-left: 0;
+    height: 96vh;
+    position: relative;
+    overflow-y: hidden;
+    top: 0;
+    width: 98%;
+    z-index: -10;
+}
+
+#container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    margin-left: 35em;
+    margin-top: 0;
+    padding-left: 2em;
+    position:relative
+}
 
         /**
         * Default styles for xterm.js
@@ -168,6 +198,11 @@
     </style>
 </head>
 
-@{body}
+
+<body id="background">
+
+    <main id="container">@{body}</main>
+
+</body>
 
 </html>
