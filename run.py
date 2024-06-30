@@ -96,16 +96,17 @@ def validate_user_response(word):
     guess = []
     characters = [char for char in word]
     hidden_value = ["_ "] * len(characters)
-    hide = "_ " * len(characters)
+    # hide = "_ " * len(characters)
 
     char_word = len(characters)
 
     print("I have a word on my mind.")
     print(f"The word is: {char_word} characters long")
     print("The word I am thinking of is:")
-    print(Fore.CYAN + hide)
+    # print(Fore.CYAN + hide)
 
     while failed_attempt < 8:
+        print(Fore.CYAN + "".join(hidden_value))
         user_response = input("Fill in a letter\n").lower().strip(" ")
         print(f"You guessed {user_response}.")
 
@@ -129,43 +130,41 @@ def validate_user_response(word):
             for index, letter in enumerate(characters):
                 if letter != "_ " and user_response == letter:
                     hidden_value[index] = letter
-            print(Fore.CYAN + "".join(hidden_value))
 
             if (hidden_value == characters):
-                result_win()
+                result_win(word)
 
         else:
             print(Fore.RED + "Oops try again")
             failed_attempt = failed_attempt + 1
             guess.append(user_response)
-
             print(Fore.CYAN + hangman_display(failed_attempt))
 
         print(f"Failed attempts: {failed_attempt}")
 
     result_fail(word)
-    clear_console()
 
 
 def result_fail(correct_answer):
     """
     Result on fail
     """
+    clear_console()
     print("You could not safe the man from hanging")
     print(f"The correct answer was {correct_answer}")
     print("Would you like to play again?")
     menu()
-    clear_console()
 
 
-def result_win():
+def result_win(correct_answer):
     """
     Result on win
     """
+    clear_console()
     print("You won")
+    print(f"The correct answer was {correct_answer}")
     print("Would you like to play again?")
     menu()
-    clear_console()
 
 
 def main():
