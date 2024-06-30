@@ -43,10 +43,10 @@ def menu():
 
     invalid_input = True
 
-    print(Fore.CYAN + "Press p: for play game")
-    print(Fore.CYAN + "Press q: for quiet game")
-
     while invalid_input:
+
+        print(Fore.CYAN + "Press p: for play game")
+        print(Fore.CYAN + "Press q: for quiet game")
 
         pressed_key = input("Enter your answer here\n").lower()
 
@@ -65,8 +65,9 @@ def menu():
 
         else:
             print("Invalid input. Please select one of the options above")
-            invalid_input = True
             clear_console()
+            print(Fore.CYAN + "Press i: for instructions")
+            invalid_input = True
 
 
 def instruction():
