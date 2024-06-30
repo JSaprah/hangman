@@ -84,7 +84,15 @@ The libraries that were imported during the project are:
 
 ## **Styling**
 
-* Colors were used to make the console look more interactive and make the notifications clear. Red for a wrong anwer, green for a right answer and other feedback is marked with yellow.
+* Colors were used to make the console look more interactive and make the notifications clear. 
+    * Red for a wrong anwer
+    * Green for a right answer
+    * Other feedback is marked with yellow
+    * The win and the lose are noted in magenta
+
+* The cyan color is used for the title, the display of the hangman and the dashes/word to guess.
+* For the background the lay-out.html file is used. A cyan colored background is used to make the look and feel better.
+* A favicon has been used which displays a hanging icon.
 
 ### **Issues and improvements**
 
@@ -96,12 +104,34 @@ The libraries that were imported during the project are:
 * Added the strip functionality to delete any extra spaces and make the input still valid
 * Added the function clear_console to delete loads of texts.
 
+## **Game content**
+
+
 
 ## **Deployment**
 
+The following deployment steps were followed:
+
+1. I added a new line chararacter behind each input text in order to make the code work correctly.
+2. I added the dependencies in the requirements.txt file with the command pip freeze > requirements.txt. After adding the dependencies I pushed the changes to the GitHub file.
+3. I created a Heroku account and added my student credits on it so that my account is ready for deployments.
+
+In Heroku I followed the following steps:
+1. Create new app.
+2. As the app name I chose for hangman-hangman as most of the combinations were already used prior and this name should be unique.
+3. As region I chose for Europe then I clicked on create app and I went to the settings.
+4. In the settings I added:
+    * The config variable: Port 8000 to access the port.
+    * The buildpacks: heroku/python and heroku/nodejs.
+5. In the deploy section I chose for GitHub as the the deployment method.
+    * After connecting to my GitHub repository I selected my project for the Hangman
+    * I selected for the automatic deployment option so my deployments happens automatically on every push from GitHub.
+6. The deployment went smooth and all dependencies were loaded. I got a url to host my project. This is the url [Hangman](https://hangman-hangman-1987c455a44a.herokuapp.com/)
 
 
-## **Game content**
+
+
+
 
 
 
