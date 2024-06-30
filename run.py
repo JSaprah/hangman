@@ -1,5 +1,6 @@
-import random
 import os
+from lists.hangman import hangman_display
+from lists.words import get_random_word
 import colorama
 from colorama import Fore
 colorama.init(autoreset=True)
@@ -22,6 +23,7 @@ def welcome():
     print("Welcome to Hangman.")
     name = input("What is your name?\n")
     print(f"Are you ready to play {name}?")
+    print(Fore.CYAN + "Press i: for instructions")
 
     menu()
 
@@ -31,8 +33,8 @@ def menu():
     invalid_input = True
 
     while invalid_input:
-        print(Fore.CYAN + "Press i: for instructions")
         print(Fore.CYAN + "Press p: for play game")
+        print(Fore.CYAN + "Press q: for quiet game")
         pressed_key = input("Enter your answer here\n")
 
         if (pressed_key == "i"):
@@ -45,6 +47,9 @@ def menu():
             play()
             return False
 
+        elif (pressed_key == "q"):
+            main()
+
         else:
             print("input not recognized. What do you want to do?")
             invalid_input = True
@@ -56,41 +61,13 @@ def instruction():
     print("Your task is to guess the letter you think is in the word")
     print("Each wrong guess will bring the man closer to be hanged")
     print("Do you think you can take the challenge and safe the hanging man?")
-    print(Fore.CYAN + "Enter p if you want to start playing the game")
-    print(Fore.CYAN + "Enter any key to go back to the menu")
 
-    action_user = input("Write your input here\n")
-
-    if (action_user == "p"):
-        clear_console()
-        play()
-
-    else:
-        "Returning you back to the menu"
-        clear_console()
-        menu()
+    menu()
 
 
 def play():
     secret_word = get_random_word()
     validate_user_response(secret_word)
-
-
-def get_random_word():
-    """
-    Get a random word from the given list
-    """
-    random_words = [
-        "avenue", "bookworm", "cycle", "duplex",
-        "eardrop", "fuchsia", "galaxy", "hyphen",
-        "injury", "jackpot", "kiosk", "luxury",
-        "matrix", "nowadays", "oxygen", "pneumonia",
-        "quartz", "rhubarb", "scratch", "transplant",
-        "unknown", "vodka", "wizard", "youthful", "zodiac"]
-
-    secret_word = random.choice(random_words)
-
-    return (secret_word)
 
 
 def validate_user_response(word):
@@ -111,7 +88,7 @@ def validate_user_response(word):
     print("The word I am thinking of is:")
     print(Fore.CYAN + hide)
 
-    while failed_attempt < 9:
+    while failed_attempt < 8:
         user_response = input("Fill in a letter\n")
         print(f"You guessed {user_response}.")
 
@@ -145,9 +122,12 @@ def validate_user_response(word):
             failed_attempt = failed_attempt + 1
             guess.append(user_response)
 
+            print(Fore.CYAN + hangman_display(failed_attempt))
+
         print(f"Failed attempts: {failed_attempt}")
 
     result_fail(word)
+    clear_console()
 
 
 def result_fail(correct_answer):
@@ -158,6 +138,7 @@ def result_fail(correct_answer):
     print(f"The correct answer was {correct_answer}")
     print("Would you like to play again?")
     menu()
+    clear_console()
 
 
 def result_win():
@@ -167,6 +148,7 @@ def result_win():
     print("You won")
     print("Would you like to play again?")
     menu()
+    clear_console()
 
 
 def clear_console():
@@ -183,6 +165,7 @@ def main():
     """
     Run all program functions
     """
+    clear_console()
     welcome()
 
 
