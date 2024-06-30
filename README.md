@@ -79,50 +79,31 @@ The libraries that were imported during the project are:
 ### **clear_console**
 
 * Function written to clear the console to keep the output clean.
-* Function used throughout the code were the need is.
+* Function used throughout the code were needed.
 * The code behind this function comes from: [Delftstack](https://www.delftstack.com/howto/python/python-clear-console/)
 
 ## **Styling**
 
 * Colors were used to make the console look more interactive and make the notifications clear. Red for a wrong anwer, green for a right answer and other feedback is marked with yellow.
 
-### **Issues**
+### **Issues and improvements**
 
 * After changing the colors with "colorama fore" the next line took over the same color. I did not want this to happen and avoid retyping the same code. After some Google research I added colorama.init(autoreset=True) to the code. Because of this I was able to make sure that the styling does not go automatically to the next line. For this part I have used the url: [Colorama](https://pypi.org/project/colorama/)
 * Ending the game when all letters are found with the result win was causing me some issues. I added a variable with a count. On each correct answer I added + 1. The add was happening. Finally, I compared the count of correctly guessed with the length of the secret word and I was hoping the game to be ended there. This worked until I got a word with twice the same letter. In this case the count increased with 1 instead of 2 letters. And it never reached the length of the secret word. As a solution and better option I compared the hidden value array with the characters arrays and if they both are the same then the user wins the game.
 * I was using the alphabet written out on the place I wanted to make a check if the correct input is given by the user. I changed this to the inbuilt functionality isalpha()
 * Characters were taken and showing the correct result. However, the dashes were not updating with the guessed letter. To solve this issue I had to Google and I came to a solution to use enumerate and join. This solved my issue. This is the URL were I found the solution: [Stackflow replacing dashes](https://stackoverflow.com/questions/57204695/replace-underscore-with-correct-guess-letter-python-hangman)
+* Added the lowercasing for making it capital input recognize
+* Added the strip functionality to delete any extra spaces and make the input still valid
+* Added the function clear_console to delete loads of texts.
 
 
 ## **Deployment**
 
 
 
+## **Game content**
 
 
 
+## **Testing**
 
-
-
-
-
-
-
-## Reminders
-
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
