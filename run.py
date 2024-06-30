@@ -96,14 +96,12 @@ def validate_user_response(word):
     guess = []
     characters = [char for char in word]
     hidden_value = ["_ "] * len(characters)
-    # hide = "_ " * len(characters)
 
     char_word = len(characters)
 
     print("I have a word on my mind.")
     print(f"The word is: {char_word} characters long")
     print("The word I am thinking of is:")
-    # print(Fore.CYAN + hide)
 
     while failed_attempt < 8:
         print(Fore.CYAN + "".join(hidden_value))
@@ -149,7 +147,6 @@ def result_fail(correct_answer):
     """
     Result on fail
     """
-    clear_console()
     print("You could not safe the man from hanging")
     print(f"The correct answer was {correct_answer}")
     print("Would you like to play again?")
@@ -160,7 +157,7 @@ def result_win(correct_answer):
     """
     Result on win
     """
-    clear_console()
+    clear_console
     print("You won")
     print(f"The correct answer was {correct_answer}")
     print("Would you like to play again?")
