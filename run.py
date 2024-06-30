@@ -64,8 +64,9 @@ def menu():
             main()
 
         else:
-            print("input not recognized. What do you want to do?")
+            print("Invalid input. Please select one of the options above")
             invalid_input = True
+            clear_console()
 
 
 def instruction():
