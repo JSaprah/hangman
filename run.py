@@ -43,9 +43,11 @@ def menu():
 
     invalid_input = True
 
+    print(Fore.CYAN + "Press p: for play game")
+    print(Fore.CYAN + "Press q: for quiet game")
+
     while invalid_input:
-        print(Fore.CYAN + "Press p: for play game")
-        print(Fore.CYAN + "Press q: for quiet game")
+
         pressed_key = input("Enter your answer here\n").lower()
 
         if (pressed_key == "i"):
