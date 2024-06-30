@@ -50,13 +50,11 @@ def menu():
 
         if (pressed_key == "i"):
             invalid_input = False
-            clear_console()
             instruction()
             return False
 
         elif (pressed_key == "p"):
             invalid_input = False
-            clear_console()
             play()
             return False
 
@@ -70,6 +68,7 @@ def menu():
 
 def instruction():
 
+    clear_console()
     print("A random word will be represented by a row of dashes")
     print("Your task is to guess the letter you think is in the word")
     print("Each wrong guess will bring the man closer to be hanged")
@@ -79,6 +78,7 @@ def instruction():
 
 
 def play():
+    clear_console()
     secret_word = get_random_word()
     validate_user_response(secret_word)
 
