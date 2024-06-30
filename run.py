@@ -99,11 +99,12 @@ def validate_user_response(word):
 
     char_word = len(characters)
 
+    print(Fore.CYAN + hangman_display(failed_attempt))
     print("I have a word on my mind.")
     print(f"The word is: {char_word} characters long")
     print("The word I am thinking of is:")
 
-    while failed_attempt < 8:
+    while failed_attempt < 9:
         print(Fore.CYAN + "".join(hidden_value))
         user_response = input("Fill in a letter\n").lower().strip(" ")
         print(f"You guessed {user_response}.")
