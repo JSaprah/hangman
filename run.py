@@ -50,11 +50,13 @@ def menu():
 
         if (pressed_key == "i"):
             invalid_input = False
+            clear_console()
             instruction()
             return False
 
         elif (pressed_key == "p"):
             invalid_input = False
+            clear_console()
             play()
             return False
 
