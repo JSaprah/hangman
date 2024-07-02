@@ -131,7 +131,7 @@ def validate_user_response(word):
                     hidden_value[index] = letter
 
             if (hidden_value == characters):
-                result_win(word)
+                result_win(word, failed_attempt)
 
         else:
             print(Fore.RED + "Oops try again")
@@ -141,28 +141,33 @@ def validate_user_response(word):
 
         print(f"Failed attempts: {failed_attempt}")
 
-    result_fail(word)
+    result_fail(word, failed_attempt)
 
 
-def result_fail(correct_answer):
+def result_fail(correct_answer, failed_attempt):
     """
     Result on fail
     """
+    clear_console()
+    print(f"Total failed attempts: {failed_attempt}")
+    print(Fore.CYAN + hangman_display(failed_attempt))
     print(Fore.MAGENTA + "You lost")
     print("You could not safe the man from hanging")
-    print("The correct answer was")
+    print("The correct answer was: ")
     print(Fore.MAGENTA + correct_answer)
     print("Would you like to play again?")
     menu()
 
 
-def result_win(correct_answer):
+def result_win(correct_answer, failed_attempt):
     """
     Result on win
     """
-    clear_console
+    clear_console()
+    print(f"Total failed attempts: {failed_attempt}")
+    print(Fore.CYAN + hangman_display(failed_attempt))
     print(Fore.MAGENTA + "You won")
-    print("The correct answer was")
+    print("The correct answer is: ")
     print(Fore.MAGENTA + correct_answer)
     print("Would you like to play again?")
     menu()
