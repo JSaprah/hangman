@@ -99,30 +99,34 @@ def validate_user_response(word):
 
     char_word = len(characters)
 
-    print(Fore.CYAN + hangman_display(failed_attempt))
-    print("I have a word on my mind.")
-    print(f"The word is: {char_word} characters long")
-    print("The word I am thinking of is:")
-
     while failed_attempt < 9:
+        print(Fore.CYAN + hangman_display(failed_attempt))
+        print("I have a word on my mind.")
+        print(f"The word is: {char_word} characters long")
+        print("The word I am thinking of is:")
         print(Fore.CYAN + "".join(hidden_value))
         user_response = input("Fill in a letter\n").lower().strip(" ")
         print(f"You guessed {user_response}.")
 
         if (user_response in guess):
+            clear_console()
             print(Fore.YELLOW + f"You already guessed these letters {guess}.")
             print("Try again!")
 
         elif (user_response == ""):
+            clear_console()
             print(Fore.YELLOW + "blank value not allowed")
 
         elif (user_response.isalpha() is False):
+            clear_console()
             print(Fore.YELLOW + "Letter not in the alphabet. Try again!")
 
         elif (len(user_response) != 1):
+            clear_console()
             print(Fore.YELLOW + "Input of only one letter required\n")
 
         elif (user_response in characters):
+            clear_console()
             print(Fore.GREEN + "Well done. Continue guessing..")
             guess.append(user_response)
 
@@ -135,10 +139,10 @@ def validate_user_response(word):
                 result(result_win, failed_attempt, word)
 
         else:
+            clear_console()
             print(Fore.RED + "Oops try again")
             failed_attempt = failed_attempt + 1
             guess.append(user_response)
-            print(Fore.CYAN + hangman_display(failed_attempt))
 
         print(f"Failed attempts: {failed_attempt}")
 
@@ -147,6 +151,11 @@ def validate_user_response(word):
 
 
 def result(result_game, attempt, correct_answer):
+
+    """
+    Show the user if he/she won and what the correct answer is.
+    Also, show the failed attempts
+    """
 
     clear_console()
     print(f"Total failed attempts: {attempt}")
