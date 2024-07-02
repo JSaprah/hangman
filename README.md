@@ -76,6 +76,7 @@ The libraries that were imported during the project are:
 * Prints statements to let the user know that he/she won.
 * Navigates back to the menu to give the user the option to play again.
 
+
 ### **clear_console**
 
 * Function written to clear the console to keep the output clean.
