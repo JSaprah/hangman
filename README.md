@@ -65,16 +65,17 @@ The libraries that were imported during the project are:
     * If a wrong letters is guessed the letters is added with append to the array of the guessed letters. The failed attempt counter is increased by 1. 
 * The conditions are checked in a while loop with a counter of failed attempts. If the failed attempt reaches the maximum the user loses the game and the result_fail with the parameter word runs.
 
-### **result_fail**
 
-* Takes the parameter word from the validate_user_response
-* Prints statements to let the user know that he/she failed to guess the right word and shows the right word to the user.
+### **Result**
+
+I had two classes: result_win and result_fail. After testing and improving the code I have removed both classes. Instead I have added the class result. Reason for this as learnt this in the lesson args and kwargs, both the functions were very identical. To make the code more readable and for future maintainence I added a boolean in the validate_user resonse name result_win. The variable is set on True if the user wins and and False if the user fails to guess the correct answer. This variable is passed as a parameter to the result function. This function prints statement win or fail based on the variable outcome. 
+
+* Takes three parameters from the validate_user_response: result game, attempt and correct answer
+* Prints statements to let the user know that he/she won or lost the game based on if the the parameter result_game is True or False.
+* Displays the final status of the hangman. Had to reprint this in this function, because of the clear console messages. 
+* Shows the correct answer based on the parameter that comes from the validate_user_response function.
 * Navigates back to the menu to give the user the option to play again.
 
-### **result_win**
-
-* Prints statements to let the user know that he/she won.
-* Navigates back to the menu to give the user the option to play again.
 
 
 ### **clear_console**
