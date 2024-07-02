@@ -158,17 +158,33 @@ def result(result_game, attempt, correct_answer):
     """
 
     clear_console()
-    print(f"Total failed attempts: {attempt}")
-    print(Fore.CYAN + hangman_display(attempt))
 
     if (result_game):
-        print(Fore.MAGENTA + "You won")
+
+        print(
+            Fore.GREEN +
+            """
+            ░█░█░█▀█░█░█░░░█░█░█▀█░█▀█
+            ░░█░░█░█░█░█░░░█▄█░█░█░█░█
+            ░░▀░░▀▀▀░▀▀▀░░░▀░▀░▀▀▀░▀░▀
+            """)
     else:
-        print(Fore.MAGENTA + "You lost")
+
+        print(
+            Fore.RED +
+            """
+            ░█░█░█▀█░█░█░░░█░░░█▀█░█▀▀░▀█▀
+            ░░█░░█░█░█░█░░░█░░░█░█░▀▀█░░█░
+            ░░▀░░▀▀▀░▀▀▀░░░▀▀▀░▀▀▀░▀▀▀░░▀░
+            """)
+
         print("You could not safe the man from hanging")
 
     print("The correct answer is: ")
-    print(Fore.MAGENTA + correct_answer)
+    print(Fore.CYAN + correct_answer)
+
+    print(f"Total failed attempts: {attempt}")
+    print(Fore.CYAN + hangman_display(attempt))
     print("Would you like to play again?")
     menu()
 
