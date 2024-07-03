@@ -64,8 +64,8 @@ def menu():
             main()
 
         else:
-            print("Invalid input. Please select one of the options above")
             clear_console()
+            print(Fore.RED + "Invalid input. Please select one of the options")
             print(Fore.CYAN + "Press i: for instructions")
             invalid_input = True
 
@@ -186,6 +186,7 @@ def result(result_game, attempt, correct_answer):
     print(f"Total failed attempts: {attempt}")
     print(Fore.CYAN + hangman_display(attempt))
     print("Would you like to play again?")
+    print(Fore.CYAN + "Press i: for instructions")
     menu()
 
 
