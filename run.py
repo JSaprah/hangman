@@ -31,9 +31,15 @@ def welcome():
     """)
 
     print("Welcome to Hangman.")
+
     name = input("What is your name?\n").lower().strip(" ")
+
+    while len(name) == 0:
+        name = input(Fore.RED + "Nice try, but really, What is your name?\n").lower().strip(" ")
+        clear_console()
+
     clear_console()
-    print(f"Are you ready to play {name}?")
+    print(Fore.WHITE + f"Are you ready to play {name}?")
     print(Fore.CYAN + "Press i: for instructions")
 
     menu()
@@ -46,7 +52,7 @@ def menu():
     while invalid_input:
 
         print(Fore.CYAN + "Press p: for play game")
-        print(Fore.CYAN + "Press q: for quiet game")
+        print(Fore.CYAN + "Press q: for quit game")
 
         pressed_key = input("Enter your answer here\n").lower()
 
