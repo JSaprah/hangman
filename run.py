@@ -35,7 +35,8 @@ def welcome():
     name = input("What is your name?\n").lower().strip(" ")
 
     while len(name) == 0:
-        name = input(Fore.RED + "Nice try, but really, What is your name?\n").lower().strip(" ")
+        print(Fore.RED + "Nice try, but really")
+        name = input("What is your name?\n").lower().strip(" ")
         clear_console()
 
     clear_console()
