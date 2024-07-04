@@ -8,7 +8,7 @@ colorama.init(autoreset=True)
 
 def clear_console():
     """
-    Clear the console
+    Called from multiple places in the program for clearing the console
     """
     command = "clear"
     if os.name in ("nt", "dos"):
@@ -47,7 +47,10 @@ def welcome():
 
 
 def menu():
-
+    """
+    Show the menu options to navigate
+    Takes the user input and navigates to the correct function
+    """
     invalid_input = True
 
     while invalid_input:
@@ -78,7 +81,10 @@ def menu():
 
 
 def instruction():
-
+    """
+    Shows the instructions to play the game
+    Navigates back to menu
+    """
     clear_console()
     print("A random word will be represented by a row of dashes")
     print("Your task is to guess the letter you think is in the word")
@@ -89,6 +95,11 @@ def instruction():
 
 
 def play():
+    """
+    Triggers the function get_random_word
+    Triggers the validate_user_response function and
+    takes the random word as the parameter
+    """
     clear_console()
     secret_word = get_random_word()
     validate_user_response(secret_word)
