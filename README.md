@@ -229,5 +229,19 @@ In Heroku I followed the following steps:
 
 ### **Automated testing**
 
+#### **Flake8**
+
 Flake8 is used throughout the project. It has helped me to recognize indention, extra spaces or print statements which exceed the characters. These issues have been resolved througout by adding/deleting the extra spaces and solving indention faults. Also, the length of the print statements have been reduced on some places.
 
+#### **Pep8**
+
+Pep8 tests have been conducted and no errors have been found.  
+
+Run file pep8 test  
+![pep8 run test](docs/screenshots/pep8-run-test.png)  
+
+Hangman file pep8 test  
+![pep8 hangman test](docs/screenshots/pep8-hangman-test.png)  
+
+Words file pep8 test  
+![pep8 words test](docs/screenshots/pep8-words-test.png)  
