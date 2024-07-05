@@ -6,14 +6,32 @@ Hangman is a guessing game in which the user has to guess the word by providing 
 
 ## **The process**
 
+A flowchart has been created using the tool: [Smart Draw](https://app.smartdraw.com/editor.aspx?credID=-65694868&depoId=58454088&flags=128) to make the steps clear prior development. The flowchart can be seen below.
+
 ![Hangman flowchart](docs/screenshots/hangman-flowchart.png)
+
+## **Data model**
+
+* A function-based approach has been used for creating this application. 
+* There is one single point of entry to the game - the main in the run file used as a best practice
+* There are two other functions under the folder lists:
+    * hangman.py: displays the hangman in steps
+    * words.py: List of words. 
+Both functions are put in a seperate file to keep it easier maintain in the future. If the list of words increases for example it can be added directly there. And to keep the main file clear (avoid getting this file too large) as the display of the Hangman takes lots of space.
+
+A data model has been created using the tool: [Smart Draw](https://app.smartdraw.com/editor.aspx?credID=-65694868&depoId=58454088&flags=128).
+
+![Hangman datamodel](docs/screenshots/hangman-datamodel.png)
+
 
 ## **Libraries**
 
 The libraries that were imported during the project are: 
-* random: To get a random word back for the secret word.
-* colorama: For the colors and the styling
-* os (operating system): For the function to clear the console.
+* Random: To get a random word back for the secret word.
+* Colorama: For styling the console with colors.
+* Os (operating system): Used to clear the console so the user does not see the load of outdated data.
+* Imported the hangman_display function from the list folder
+* Imported the random_word function from the list folder
 
 
 ## **Functions explained**
@@ -46,7 +64,7 @@ The libraries that were imported during the project are:
 
 ### **get_random_word**
 
-* Provides a list of words for the game
+* Provides a list of words for the game by adding words to the array random_words
 * Returns one random word from the list above as the secret_word using the library random
 
 ### **validate_user_response**
@@ -66,9 +84,9 @@ The libraries that were imported during the project are:
 * The conditions are checked in a while loop with a counter of failed attempts. If the failed attempt reaches the maximum the user loses the game and the result_fail with the parameter word runs.
 
 
-### **Result**
+### **result**
 
-I had two classes: result_win and result_fail. After testing and improving the code I have removed both classes. Instead I have added the class result. Reason for this as learnt this in the lesson args and kwargs, both the functions were very identical. To make the code more readable and for future maintainence I added a boolean in the validate_user resonse name result_win. The variable is set on True if the user wins and and False if the user fails to guess the correct answer. This variable is passed as a parameter to the result function. This function prints statement win or fail based on the variable outcome. 
+I had two functions: result_win and result_fail. After testing and improving the code I have removed both functions. Instead I have added the function result. Reason for this as learnt this in the lesson args and kwargs, both the functions were very identical. To make the code more readable and for future maintainence I added a boolean in the validate_user resonse name result_win. The variable is set on True if the user wins and False if the user fails to guess the correct answer. This variable is passed as a parameter to the result function. The function prints statement win or fail based on the variable outcome. The previous setup can be seen in the section bugs and fixes.
 
 * Takes three parameters from the validate_user_response: result game, attempt and correct answer
 * Prints statements to let the user know that he/she won or lost the game based on if the the parameter result_game is True or False.
@@ -76,13 +94,18 @@ I had two classes: result_win and result_fail. After testing and improving the c
 * Shows the correct answer based on the parameter that comes from the validate_user_response function.
 * Navigates back to the menu to give the user the option to play again.
 
-
-
 ### **clear_console**
 
 * Function written to clear the console to keep the output clean.
 * Function used throughout the code were needed.
 * The code behind this function comes from: [Delftstack](https://www.delftstack.com/howto/python/python-clear-console/)
+
+### **hangman_display**
+
+* Takes attempt as a parameter from the validate_user_response function
+* Adds the display hangman in an array called stages
+* Returns the array to the validate function
+
 
 ## **Styling**
 
@@ -159,7 +182,14 @@ Win
 ![win screen](docs/screenshots/win-screen.png)  
 
 Lost  
-![lost screen](docs/screenshots/lost-screen.png)  
+![lost screen](docs/screenshots/lost-screen.png) 
+
+
+## **Future enhancements**
+
+* Add multiplayer option: One player inserts a word and the other person hass to guess
+* Save the results: how many words are guessed right by the user
+* Add emoticons on the given answers by the user. I have already worked with colors, would be a nice to have to make the game visually more attractive.
 
 
 ## **Deployment**
@@ -182,6 +212,7 @@ In Heroku I followed the following steps:
     * I selected for the automatic deployment option so my deployments happens automatically on every push from GitHub.
 6. The deployment went smooth and all dependencies were loaded. I got a url to host my project. This is the url [Hangman](https://hangman-hangman-1987c455a44a.herokuapp.com/)
 
+
 ### **Bugs and fixes**
 
 * After changing the colors with "colorama fore" the next line took over the same color. I did not want this to happen and avoid retyping the same code. After some Google research I added colorama.init(autoreset=True) to the code. Because of this I was able to make sure that the styling does not go automatically to the next line. For this part I have used the url: [Colorama](https://pypi.org/project/colorama/)
@@ -191,6 +222,12 @@ In Heroku I followed the following steps:
 * Added the lowercasing for making it capital input recognize
 * Added the strip functionality so that no empty string can be passed as the name
 * Added the function clear_console to delete loads of texts.
+* Merged two functions result-win and result-fail as one function.
+
+The result function is a merge of the result-win and result fail function. The prior code can be seen below.
+
+![result-win result-fail merge](docs/screenshots/result-win-result-fail.png)
+
 
 ## **Testing**
 
@@ -245,3 +282,15 @@ Hangman file pep8 test
 
 Words file pep8 test  
 ![pep8 words test](docs/screenshots/pep8-words-test.png)  
+
+#### **CSS**
+
+I have added a background image and centred the console to the middle. The css file did not give any errors back after validating it with the w3c validator.
+
+![W3C CSS validator](docs/screenshots/w3c-css-validator-hangman.png)
+
+#### **HTML**
+
+HTML issues were found in the W3C validator. I have double checked on these errors with my mentor and tutor support. I have been advised that I can keep them as unfixed as this is out of the scope for this project and it looks more like a template issue.
+
+![W3C HTML validator](docs/screenshots/w3c-html-validator.png)
