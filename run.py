@@ -8,7 +8,7 @@ colorama.init(autoreset=True)
 
 def clear_console():
     """
-    Called from multiple places in the program for clearing the console
+    Clears the console and is called from several functions within the program
     """
     command = "clear"
     if os.name in ("nt", "dos"):
@@ -18,7 +18,7 @@ def clear_console():
 
 def welcome():
     """
-    Welcome the user to the game.
+    Welcomes the user to the game
     """
 
     print(Fore.CYAN + """
@@ -48,8 +48,8 @@ def welcome():
 
 def menu():
     """
-    Show the menu options to navigate
-    Takes the user input and navigates to the correct function
+    Shows the menu options and
+    navigates to the correct function based on user input
     """
     invalid_input = True
 
@@ -82,8 +82,8 @@ def menu():
 
 def instruction():
     """
-    Shows the instructions to play the game
-    Navigates back to menu
+    Shows the guidelines to play the game and
+    navigates back to menu
     """
     clear_console()
     print("A random word will be represented by a row of dashes")
@@ -97,8 +97,7 @@ def instruction():
 def play():
     """
     Triggers the function get_random_word
-    Triggers the validate_user_response function and
-    takes the random word as the parameter
+    Triggers the validate_user_response function
     """
     clear_console()
     secret_word = get_random_word()
@@ -107,8 +106,8 @@ def play():
 
 def validate_user_response(word):
     """
-    Set the turns to 0 and increase the count if the user makes a wrong guess
-    Receive and validate user response
+    Receives and validates the user response
+    on several conditions
     """
     failed_attempt = 0
     guess = []
@@ -169,12 +168,9 @@ def validate_user_response(word):
 
 
 def result(result_game, attempt, correct_answer):
-
     """
-    Show the user if he/she won and what the correct answer is.
-    Also, show the failed attempts
+    Shows the user if he/she won and what the correct answer is
     """
-
     clear_console()
 
     if (result_game):
@@ -210,7 +206,7 @@ def result(result_game, attempt, correct_answer):
 
 def main():
     """
-    Run all program functions
+    Single point of entry to run the program
     """
     clear_console()
     welcome()

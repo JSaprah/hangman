@@ -1,6 +1,6 @@
 def hangman_display(attempts):
     """
-    Displays the Hangman per stage. Returns the number of attempts
+    Displays the Hangman per stage and returns the number of attempts
     """
     stages = [
               """

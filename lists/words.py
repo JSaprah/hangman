@@ -3,7 +3,8 @@ import random
 
 def get_random_word():
     """
-    Get a random word from the given list
+    Gets a random word from the list and
+    return the secret word
     """
     random_words = [
         "avenue", "bookworm", "cycle", "duplex",
